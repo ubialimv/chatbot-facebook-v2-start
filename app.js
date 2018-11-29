@@ -53,6 +53,8 @@ if (!config.PG_CONFIG) { //pg config
 	throw new Error('missing PG_CONFIG');
 }
 
+console.log('pg conf: ', config.PG_CONFIG);
+
 app.set('port', (process.env.PORT || 5000))
 
 //verify request came from facebook
