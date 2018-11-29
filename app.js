@@ -821,11 +821,7 @@ function greetUserText(userId) {
 
 				});
 				pool.end();
-
-
-				sendTextMessage(userId, "Welcome " + user.first_name + '! ' +
-                    'I can answer frequently asked questions for you ' +
-                    'and I perform job interviews. What can I help you with?');
+				sendTextMessage(userId, "Welcome " + user.first_name + '!');
 			} else {
 				console.log("Cannot get data for fb user with id",
 					userId);
