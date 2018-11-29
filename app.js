@@ -799,6 +799,7 @@ function greetUserText(userId) {
 							if (err) {
 								console.log('Query error: ' + err);
 							} else {
+								console.log('result ', result.rows);
 								if (result.rows.length === 0) {
 									let sql = 'INSERT INTO users (fb_id, first_name, last_name, profile_picture) VALUES ($1, $2, $3, $4)';
 									client.query(sql,
