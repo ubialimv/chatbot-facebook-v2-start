@@ -7,9 +7,8 @@ const crypto = require('crypto');
 const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
-const pg = require('pg');
 const uuid = require('uuid');
-
+const pg = require('pg');
 pg.defaults.ssl = true;
 
 // Messenger API parameters
@@ -788,12 +787,14 @@ function greetUserText(userId) {
 			console.log('getUserData: ' + user);
 			if (user.first_name) {
 
+				console.log('creating pool');
 				var pool = new pg.Pool(config.PG_CONFIG);
+				console.log('pool created');
 				pool.connect(function(err, client, done) {
+					console.log('connecting on database');
 					if (err) {
 						return console.error('Error acquiring client', err.stack);
 					}
-					console.log('connecting on database');
 					var rows = [];
 					console.log('fetching user');
 					client.query(`SELECT id FROM public.users WHERE fb_id='${userId}' LIMIT 1`,
