@@ -53,8 +53,6 @@ if (!config.PG_CONFIG) { //pg config
 	throw new Error('missing PG_CONFIG');
 }
 
-console.log('pg conf: ', config.PG_CONFIG);
-
 app.set('port', (process.env.PORT || 5000))
 
 //verify request came from facebook
@@ -72,11 +70,6 @@ app.use(bodyParser.urlencoded({
 
 // Process application/json
 app.use(bodyParser.json());
-
-
-
-
-
 
 const credentials = {
     client_email: config.GOOGLE_CLIENT_EMAIL,
@@ -807,7 +800,7 @@ function greetUserText(userId) {
 								console.log('Query error: ' + err);
 							} else {
 								if (result.rows.length === 0) {
-									let sql = 'INSERT INTO users (fb_id, first_name, last_name, profile_pic) VALUES ($1, $2, $3, $4)';
+									let sql = 'INSERT INTO users (fb_id, first_name, last_name, profile_picture) VALUES ($1, $2, $3, $4)';
 									client.query(sql,
 										[
 											userId,
