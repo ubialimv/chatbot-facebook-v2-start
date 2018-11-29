@@ -794,6 +794,7 @@ function greetUserText(userId) {
 						return console.error('Error acquiring client', err.stack);
 					}
 					var rows = [];
+					console.log('connectou no banco');
 					client.query(`SELECT fb_id FROM users WHERE fb_id='${userId}' LIMIT 1`,
 						function(err, result) {
 							if (err) {
